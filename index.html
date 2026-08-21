@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mission Control — Job Tracker</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+   
+    <header class="header">
+      <div class="header-top">
+        <div>
+          <h1>Mission Control</h1>
+          <p class="subtitle">Your job search, tracked and scored.</p>
+        </div>
+        <button class="btn primary" id="toggleFormBtn">+ Add application</button>
+      </div>
+
+      <div class="rail" id="rail"></div>
+    </header>
+    <div class="ai-match-section">
+  <h3>AI Job Match</h3>
+  <textarea id="resumeInput" placeholder="Paste your resume/skills here"></textarea>
+  <textarea id="jobInput" placeholder="Paste job description here"></textarea>
+  <button id="matchBtn">Check Match</button>
+  <div id="matchResult"></div>
+</div>
+    <div class="form-card" id="jobForm">
+      <div class="form-grid">
+        <label class="field">
+          <span>Company</span>
+          <input type="text" id="f-company" placeholder="e.g. Razorpay" />
+        </label>
+        <label class="field">
+          <span>Role</span>
+          <input type="text" id="f-role" placeholder="e.g. Frontend Developer" />
+        </label>
+        <label class="field">
+          <span>Applied on</span>
+          <input type="date" id="f-date" />
+        </label>
+        <label class="field">
+          <span>Stage</span>
+          <select id="f-stage">
+            <option value="applied">Applied</option>
+            <option value="interview">Interview</option>
+            <option value="offer">Offer</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </label>
+        <label class="field span2">
+          <span>Job link</span>
+          <input type="text" id="f-link" placeholder="https://..." />
+        </label>
+        <label class="field span2">
+          <span>Notes</span>
+          <textarea id="f-notes" rows="2" placeholder="Referral, recruiter name, interview round..."></textarea>
+        </label>
+      </div>
+      <div class="form-actions">
+        <button class="btn ghost" id="cancelFormBtn">Cancel</button>
+        <button class="btn primary" id="saveJobBtn">Save application</button>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <input class="search" id="searchInput" placeholder="Search by company or role..." />
+      <div class="tabs" id="filterTabs">
+        <button class="tab active" data-filter="all">All</button>
+        <button class="tab" data-filter="applied">Applied</button>
+        <button class="tab" data-filter="interview">Interview</button>
+        <button class="tab" data-filter="offer">Offer</button>
+        <button class="tab" data-filter="rejected">Rejected</button>
+      </div>
+    </div>
+
+    <div class="list" id="jobList"></div>
+
+  </div>
+
+  <script src="first.js"></script>
+</body>
+</html>
