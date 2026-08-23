@@ -355,7 +355,7 @@ document.getElementById('matchBtn').addEventListener('click', async () => {
   resultDiv.textContent = "Checking match...";
 
   try {
-    const response = await fetch('http://localhost:5000/match', {
+    const response = await fetch('https://mission-control-backend-q3md.onrender.com/match', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ resume, jobDescription })
