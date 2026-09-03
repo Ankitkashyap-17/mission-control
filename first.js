@@ -355,16 +355,15 @@ document.getElementById('matchBtn').addEventListener('click', async () => {
   resultDiv.textContent = "Checking match...";
 
   try {
-    const response = await fetch('https://mission-control-backend-q3md.onrender.com/match', {
+    const response = await fetch('https://mission-control-shhn.onrender.com/match', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ resume, jobDescription })
     });
 
-    const data = await response.json();
-    const parsed = JSON.parse(data.result);
+    const parsed = await response.json();
 
-    resultDiv.innerHTML = `<strong>Score:</strong> ${parsed.score}/100<br><strong>Reason:</strong> ${parsed.reason}`;
+    resultDiv.innerHTML = `<strong>Match:</strong> ${parsed.match_percent}%<br><strong>Missing Keywords:</strong> ${(parsed.missing_keywords || []).join(", ")}`;
   } catch (error) {
     resultDiv.textContent = "Error: " + error.message;
   }
