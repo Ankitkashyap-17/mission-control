@@ -51,7 +51,14 @@ Give a match score out of 100, and a 2-line reason. Reply ONLY in this JSON form
     const data = await response.json();
     console.log("Gemini raw response:", JSON.stringify(data));
     const aiText = data.candidates[0].content.parts[0].text;
-    res.json({ result: aiText });
+
+// Remove markdown code fences (```json ... ```)
+const cleanText = aiText.replace(/```json/g, "").replace(/```/g, "").trim();
+
+// Parse it into a real JSON object
+const parsedResult = JSON.parse(cleanText);
+
+res.json(parsedResult);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
