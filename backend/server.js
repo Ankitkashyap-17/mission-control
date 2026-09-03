@@ -30,12 +30,13 @@ app.post('/match', async (req, res) => {
   try {
     const { resume, jobDescription } = req.body;
 
-    const prompt = `You are a job matching assistant. Compare the resume and job description below.
+  const prompt = `You are a job matching assistant. Compare the resume and job description below.
+
 Resume: ${resume}
 Job Description: ${jobDescription}
 
-Give a match score out of 100, and a 2-line reason. Reply ONLY in this JSON format:
-{"score": number, "reason": "string"}`;
+Reply ONLY in this exact JSON format, nothing else:
+{"match_percent": number, "missing_keywords": ["keyword1", "keyword2"], "suggestions": ["suggestion1", "suggestion2"]}`;
 
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`,
